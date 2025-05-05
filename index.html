@@ -14,9 +14,21 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-      display: flex;
       background-color: #f4f7fa;
       color: #333;
+    }
+
+    .burger {
+      display: none;
+      font-size: 2rem;
+      color: white;
+      background: #111;
+      padding: 10px 20px;
+      cursor: pointer;
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 1100;
     }
 
     nav {
@@ -26,6 +38,9 @@
       width: 250px;
       padding: 40px 20px;
       position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
     }
 
     nav h1 {
@@ -55,7 +70,7 @@
     .main {
       margin-left: 250px;
       padding: 40px;
-      width: 100%;
+      transition: margin-left 0.3s ease;
     }
 
     section {
@@ -148,10 +163,36 @@
       color: #777;
       margin-top: 60px;
     }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .burger {
+        display: block;
+      }
+
+      nav {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        display: none;
+        position: fixed;
+      }
+
+      nav.open {
+        display: block;
+      }
+
+      .main {
+        margin-left: 0;
+        padding-top: 100px;
+      }
+    }
   </style>
 </head>
 <body>
-  <nav>
+  <div class="burger" id="burger">☰</div>
+
+  <nav id="nav">
     <h1>Akshay</h1>
     <ul>
       <li><a href="#about">About</a></li>
@@ -165,7 +206,7 @@
     <section id="about" class="about">
       <h2>About Me</h2>
       <p>
-        Hi, I'm Akshay Sharma — a passionate frontend developer and machine learning enthusiast. I specialize in crafting responsive and modern web interfaces, and I enjoy building tools that make life easier and better.
+        I'm a student at Dronacharya College of Engineering and a software development enthusiast with a passion for crafting engaging web experiences. Eagerly learning the latest technologies to build user-friendly websites using HTML, CSS, and JavaScript.
       </p>
     </section>
 
@@ -173,20 +214,16 @@
       <h2>Projects</h2>
       <div class="grid">
         <div class="project-card">
+          <h3>Personal Portfolio</h3>
+          <p>A responsive personal portfolio website made with HTML, CSS, and JavaScript showcasing skills and projects.</p>
+        </div>
+        <div class="project-card">
+          <h3>Currency Converter</h3>
+          <p>Converts currencies using live exchange rates fetched from an API, built with HTML, CSS, and vanilla JS.</p>
+        </div>
+        <div class="project-card">
           <h3>Expense Tracker</h3>
-          <p>A responsive app to track daily expenses. Built using JavaScript and localStorage.</p>
-        </div>
-        <div class="project-card">
-          <h3>Weather Forecast App</h3>
-          <p>Displays live weather using OpenWeatherMap API. Clean UI with CSS Flexbox.</p>
-        </div>
-        <div class="project-card">
-          <h3>AI Text Summarizer</h3>
-          <p>Summarizes long articles using Python and HuggingFace Transformers.</p>
-        </div>
-        <div class="project-card">
-          <h3>Blog Platform</h3>
-          <p>A basic blog engine using Node.js, Express, and EJS templating.</p>
+          <p>Track your income and expenses with this simple JS app using local storage for data persistence.</p>
         </div>
       </div>
     </section>
@@ -197,9 +234,7 @@
         <li>HTML5</li>
         <li>CSS3</li>
         <li>JavaScript</li>
-        <li>React</li>
-        <li>Python</li>
-        <li>TensorFlow</li>
+        <li>Responsive Design</li>
         <li>Git</li>
       </ul>
     </section>
@@ -223,5 +258,14 @@
       <p>© 2025 Akshay Sharma</p>
     </footer>
   </div>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('nav');
+
+    burger.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
